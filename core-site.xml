@@ -1,5 +1,10 @@
 <configuration>
   <property>
+    <name>dfs.client.use.datanode.hostname</name>
+    <value>true</value>
+    <description>Whether clients should use datanode hostnames when connecting to datanodes.</description>
+  </property>
+  <property>
     <name>fs.s3a.path.style.access</name>
     <value>true</value>
   </property>

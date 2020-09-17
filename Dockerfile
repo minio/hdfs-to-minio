@@ -1,11 +1,11 @@
 FROM ubuntu:20.04
 
-RUN apt update -y && apt upgrade -y
-RUN apt install openjdk-8-jdk wget less coreutils -y
-RUN wget https://archive.apache.org/dist/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz && tar xvf hadoop-3.2.1.tar.gz
+RUN apt update --yes && apt upgrade --yes \
+    && apt install openjdk-8-jdk wget --yes \
+    && wget --quiet https://archive.apache.org/dist/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz \
+    && tar xf hadoop-3.2.1.tar.gz && useradd -d /hadoop-3.2.1 -s /bin/bash hadoop \
+    && chown -R 1000:1000 /hadoop-3.2.1
 
-RUN useradd -d /hadoop-3.2.1 -s /bin/bash hadoop
-RUN chown -R 1000:1000 /hadoop-3.2.1
 USER hadoop
 
 WORKDIR /hadoop-3.2.1
